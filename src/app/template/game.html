@@ -1,0 +1,73 @@
+<div ng-controller="comicController">
+<md-toolbar style="-webkit-app-region: drag">
+      <div class="md-toolbar-tools">
+      <md-menu>
+      <md-button style="-webkit-app-region: no-drag" class="md-fab md-mini" aria-label="Menu" ng-click="$mdMenu.open($event)">
+          <i class="fa fa-bars"></i>
+        </md-button>
+      <md-menu-content style="-webkit-app-region: no-drag" width="4">
+        <md-menu-item>
+          <md-button style="-webkit-app-region: no-drag" ng-click="openViewCollectionsDialog()">
+            <i class="fa fa-server"></i>
+            View Collections
+          </md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button style="-webkit-app-region: no-drag" ng-click="openAddCollectionsDialog()">
+            <i class="fa fa-plus"></i>
+            Add Collection
+          </md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button style="-webkit-app-region: no-drag" ng-click="_ctrl.reloadGames()">
+            <i class="fa fa-cloud-download"></i>
+            Update Comics
+          </md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
+        <md-truncate style="position: absolute; left: 90px; right: 170px; top: 16px; bottom: 10px;">ComicShelf</md-truncate>
+
+        <span flex></span>
+        <md-button style="-webkit-app-region: no-drag" class="md-fab md-mini" aria-label="Add" ng-click="openAddGameDialog()">
+          <i class="fa fa-plus"></i>
+        </md-button>
+        <md-button style="-webkit-app-region: no-drag" class="md-fab md-mini" aria-label="Minimise" ng-click="minimise()">
+          <i class="fa fa-minus"></i>
+        </md-button>
+        <md-button style="-webkit-app-region: no-drag" class="md-fab md-mini" aria-label="Close" ng-click="quit()">
+          <i class="fa fa-times"></i>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+<md-content class="md-padding">
+    <md-tabs md-selected="selectedIndex" md-border-bottom md-autoselect md-dynamic-height>
+      <md-tab ng-repeat="tab in tabs"
+              ng-disabled="tab.disabled"
+              label="{{tab.title}}">
+
+<div style="width:80%; height: 80%; margin-left: auto;margin-right: auto; margin-top: 20px">
+<md-grid-list
+			md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="5"
+            md-row-height-gt-md="1.5:1" md-row-height="9:6"
+            md-gutter="12px" md-gutter-gt-sm="8px" >
+			
+			<md-grid-tile style="background-color: grey; min-width: 128px;" layout="column" ng-repeat="it in _ctrl.combinedGames | orderBy:'name' | filter: tab.filter track by it.id">
+				<div style="display:table-cell; vertical-align:middle; text-align:center; max-height: 70%; margin-top: -20%; overflow: hidden">
+					<img ng-src="{{it.image}}" alt="Icon" style="width: 100%; height: auto; max-height: 100%;"></img>
+				</div>
+				<md-grid-tile-footer style="background-color: grey; max-height: 70%">
+                    <div layout="row" layout-align="space-around center">
+                        <md-button ng-click="runApp(it)">View</md-button>
+                        <md-button ng-click="openGameInfoDialog(it)">Details</md-button>
+                    </div>
+                </md-grid-tile-footer>
+			</md-grid-tile>		
+		</md-grid-list>
+    </div>
+    
+      </md-tab>
+    </md-tabs>
+  </md-content>
+</div>

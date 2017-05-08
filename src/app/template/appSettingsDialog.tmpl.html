@@ -1,0 +1,42 @@
+
+<md-dialog aria-label="GameShelf Settings" flex="70%">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>ComicShelf Settings</h2>
+        <span flex></span>
+        <md-button class="md-fab md-mini" ng-click="cancel()">
+          <i class="fa fa-times fa-2x" aria-hidden="true" aria-label="Close dialog"></i>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+    <md-list>
+      <md-list-item class="md-3-line md-no-proxy">
+        <div class="md-list-item-text">
+          <h2>Steam Settings</h2>
+          <md-checkbox ng-checked="useSteam" ng-click="toggleUseSteam()">
+            Use Steam
+          </md-checkbox>
+          <br/>
+          
+        <div layout="row" layout-align="left center" ng-hide="!useSteam">
+          <label class="ng-hide">
+            <input id="input-file-id" type="file" onchange="angular.element(this).scope().setFileLocation(this)">
+          </label>
+          <label style="width: 40%" for="input-file-id" class="md-button md-raised md-primary">Location Of Steam.exe</label>
+          <span style="width: 60%">{{fileLocation?fileLocation : 'No File'}}</span>
+        </div>
+        </div>
+        <md-divider></md-divider>
+      </md-list-item>
+    </md-list>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <md-button class="md-button md-raised md-primary" ng-click="apply()">
+        Apply
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

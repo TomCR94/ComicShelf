@@ -1,0 +1,18 @@
+.animate-show {
+  max-height: 0;
+  background: white;
+  overflow: hidden;
+  transition: all 0.5s;
+}
+
+.animate-show.ng-hide-add, .animate-show.ng-hide-remove {
+  transition: all 0.5s;
+}
+
+.animate-show:not(.ng-hide) {
+  max-height: 600px;
+}
+
+md-grid-tile-footer figcaption  {
+  width:100%;
+}

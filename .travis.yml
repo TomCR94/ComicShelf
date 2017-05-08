@@ -1,0 +1,23 @@
+language: node_js
+matrix:
+  include:
+  - os: linux
+cache:
+  directories:
+  - node_modules
+  - app/node_modules
+  - "$HOME/.electron"
+  - "$HOME/.cache"
+addons:
+install:
+- nvm install 6
+- npm install electron-builder@next
+- npm install
+- npm prune
+before_script:
+  - npm install gulp
+script:
+- gulp build
+branches:
+  except:
+  - "/^v\\d+\\.\\d+\\.\\d+$/"

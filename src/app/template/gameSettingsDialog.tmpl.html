@@ -1,0 +1,47 @@
+
+<md-dialog aria-label="{{mdDialogData.name}}" flex="70%">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>{{mdDialogData.name}}</h2>
+        <span flex></span>
+        <md-button class="md-fab md-mini" ng-click="cancel()">
+          <i class="fa fa-times fa-2x" aria-hidden="true" aria-label="Close dialog"></i>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content" >
+        <md-input-container class="md-block">
+        <label>Title</label>
+        <input ng-model="NewGameData.name">
+        </md-input-container>
+        
+        <md-input-container class="md-block">
+        <label>Publisher</label>
+        <input ng-model="NewGameData.publisher">
+        </md-input-container>
+        
+        <md-input-container class="md-block">
+          <label>Overview</label>
+          <textarea ng-model="NewGameData.description" md-maxlength="2000" rows="5" md-select-on-focus></textarea>
+        </md-input-container>
+
+        <div layout="row" layout-align="left center" ng-hide="NewGameData.Platforms[0] === 'Steam'">
+          <label class="ng-hide">
+            <input id="input-file-id" type="file" onchange="angular.element(this).scope().setFileLocation(this)">
+          </label>
+          <label style="width: 20%" for="input-file-id" class="md-button md-raised md-primary">Choose Files</label>
+          <span style="width: 60%">{{fileLocation?fileLocation : 'No File'}}</span>
+      </div>
+
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <md-button class="md-button md-raised md-primary" ng-click="apply()">
+        Apply
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

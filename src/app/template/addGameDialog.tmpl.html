@@ -1,0 +1,67 @@
+<md-dialog aria-label="Add Comic" style="min-width: 80%">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Add Comic</h2>
+        <span flex></span>
+        <md-button class="md-fab md-mini" ng-click="cancel()">
+          <i class="fa fa-times fa-2x" aria-hidden="true" aria-label="Close dialog"></i>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <div layout="row">
+    <md-dialog-content style="max-width: 50%">
+        
+    <form name="gameForm">
+      <div class="md-dialog-content" >
+          <md-input-container class="md-block">
+            <label>Comic Name</label>
+                <input required md-no-asterisk name="name" ng-model="newGame.name">
+                <div ng-messages="newGame.$error">
+                <div ng-message="required">This is required.</div>
+                </div>
+        </md-input-container>
+        
+
+        <md-button ng-disabled="gameForm.$invalid" class="md-button md-raised md-primary" type="submit" ng-click="useFilters?searchGamesWithFilters(newGame):searchGames(newGame)">Submit</md-button>
+
+        </form>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-content style="max-width: 50%" >
+      <div class="md-dialog-content" >
+        <h2>{{resultText}}</h2>
+        <div>
+        <md-input-container ng-show="resultGames.length > 0">
+          <label>Game</label>
+          <md-select  ng-change="changed()" ng-model="selectedGame" ng-disabled="resultGames.length < 1">
+            <md-option ng-repeat="game in resultGames" ng-value="game">
+              {{game.name}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+        <div ng-if="error">
+            <p style="color: red">{{error}}</p>
+        </div>
+        <div ng-show="gameDetails" class="animate-show ng-hide ng-hide-animate">
+        <div layout="row">
+        <div style="width: 40%">
+          <p><b>Name: </b>{{gameDetails.name}}</p>
+          <p ng-if="gameDetails.ReleaseDate"><b>Release Date: </b>{{gameDetails.ReleaseDate}}</p>
+        </div>
+        <div style="width: 20%">
+        </div>
+        <div style="width: 40%">
+          <p ng-if="gameDetails.publisher"><b>Publisher: </b>{{gameDetails.publisher}}</p>
+        </div>
+        </div>
+        <p><b>Overview: </b>{{gameDetails.description}}</p>
+        
+        <md-button class="md-button md-raised md-primary" type="submit" ng-click="addComic(gameDetails)">Add Comic</md-button>
+        </div>
+      </div>
+    </md-dialog-content>
+    </div>
+  </form>
+</md-dialog>

@@ -1,0 +1,39 @@
+{
+  "name": "ComicShelf",
+  "version": "1.0.0",
+  "description": "A minimal Electron application",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "package": "electron-packager ./ ComicShelf --asar --Windows --out ./Build --electron-version 1.6.2 --overwrite"
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "~1.6.2",
+    "electron-packager": "^8.6.0",
+    "electron-windows-installer": "^1.4.4"
+  },
+  "dependencies": {
+    "electron-window-state": "^4.1.1",
+    "open": "^0.0.5",
+    "font-awesome": "^4.7.0",
+    "electron-json-config": "^1.5.0",
+    "filehound": "^1.16.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-uglify": "^2.1.2",
+    "gulp-usemin": "^0.3.28",
+    "image-downloader": "^3.2.1",
+    "filewatcher": "^3.0.1",
+    "unirest": "^0.5.1",
+    "simple-vdf": "^1.1.0"
+  }
+}
