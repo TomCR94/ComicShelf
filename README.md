@@ -1,1 +1,1 @@
-##GameShelf Video Game Manager##
+##ComicShelf Comic Library Manager##
